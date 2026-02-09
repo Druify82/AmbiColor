@@ -1,45 +1,79 @@
 # AmbiColor
 
-AmbiColor is a small, accessibility-first Windows application that generates
-continuous ambient color transitions on the screen.
+AmbiColor is a small, accessibility-first Windows desktop app that generates
+continuous ambient color transitions.
 
 The focus is on:
 - soft, non-aggressive color changes
 - perceptually pleasing transitions
 - full keyboard accessibility
 - screen reader compatibility (NVDA tested)
-- simple, transparent control via sliders, switches, and presets
+- transparent control via sliders, switches, and presets
 
 AmbiColor is not a screensaver and not a design tool.
 It is an ambient visual instrument.
 
-The name “AmbiColor” is a deliberate wordplay:
-ambient + ambiguity / ambivalence.
+---
+
+## Current Status
+
+This repository now includes an initial **v0.1 implementation** for:
+- Preset 01 (Classic Color Cycle)
+- keyboard-only operation
+- screen-reader friendly labels and state text
+- basic color naming tied to exact color values
+- in-app preset descriptions (what each preset is intended to do)
+- combined playback control (`Start` / `Pause` / `Resume`) + explicit `Stop` state
+
+Presets 02-04 are visible in the UI but intentionally not fully implemented yet.
+
+Color naming in v0.1 is manual:
+- you can assign your own name to the currently shown HEX color
+- automatic naming is planned for future versions
 
 ---
 
-## Target Use
+## Runtime Requirement
 
-- Decorative ambient light on monitors or TVs
-- Calm background visuals without distraction
-- Accessible use for blind and visually impaired users
-- Exploration of color perception and rhythm
+Primary runtime target:
+- Conda environment: `devenv`
+- Python: `>=3.14,<3.15` (validated against `3.14.2` in `devenv`)
 
 ---
 
-## Version Scope
+## Run (devenv)
 
-This repository currently defines **AmbiColor v0.1**.
+Run the commands from the project root `AmbiColor/` (the folder that contains `requirements.txt`).
 
-v0.1 focuses on:
-- full-screen or maximized window color display
-- continuous color cycling
-- a small set of well-defined presets
-- basic customization of those presets
-- strict keyboard and screen reader usability
+```bash
+conda activate devenv
+pip install -r requirements.txt
+python app/main.py
+```
 
-More advanced visual effects are explicitly deferred
-(see `ROADMAP.md`).
+If `conda activate` is unreliable in your WSL setup, use:
+
+```bash
+"/mnt/c/Users/wasch/anaconda3/Scripts/conda.exe" run -n devenv python -m pip install -r requirements.txt
+"/mnt/c/Users/wasch/anaconda3/Scripts/conda.exe" run -n devenv python app/main.py
+```
+
+---
+
+## Test
+
+```bash
+conda activate devenv
+pytest -q
+```
+
+Alternative (WSL + Windows conda.exe):
+
+```bash
+"/mnt/c/Users/wasch/anaconda3/Scripts/conda.exe" run -n devenv pytest -q
+```
+
+Manual NVDA acceptance is defined in `docs/TEST_NVDA.md`.
 
 ---
 
@@ -52,26 +86,21 @@ Design principles:
 - All controls labeled for screen readers
 - No mouse required
 - No visual-only feedback
-- Clear value reporting (numbers, names, states)
+- Clear state reporting (running / paused / standstill)
 
 ---
-
-## Files Overview
-
-- `SPEC.md` – formal specification of AmbiColor v0.1
-- `TEST_NVDA.md` – acceptance tests for keyboard and NVDA usage
-- `ROADMAP.md` – features planned beyond v0.1
-- `presets/` – documentation of built-in presets
-
----
-
-## Status
-
-This project is currently in the **specification phase**.
-Implementation is expected to be generated with AI assistance
-and iterated through structured testing.
 
 ## Documentation
+
 - [Specification](docs/SPEC.md)
 - [Roadmap](docs/ROADMAP.md)
+- [Preset Calibration Notes](docs/PRESET_CALIBRATION.md)
 - [NVDA Test Script](docs/TEST_NVDA.md)
+- [Preset 01 Details](docs/presets/preset_01_classic_color_cycle.md)
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+See `LICENSE` for details.

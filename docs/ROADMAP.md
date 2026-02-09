@@ -10,6 +10,9 @@ but already envisioned.
 - Automatic color naming (approximate, perceptual)
 - Color category browser (e.g. dark orange, soft blue)
 - Synchronization between numeric values and names
+- Split the current "Natural / Artistic" blend into two dedicated presets:
+- `Artistic`: palette transitions around red/yellow/blue families with curated crossfades (red/orange/yellow, yellow/green/blue, blue/purple/red, brown accents, optional randomness)
+- `Natural`: nature-inspired color narratives (sky day/night, earth/green, blossom accents)
 
 ---
 
@@ -18,6 +21,7 @@ but already envisioned.
 - Non-linear timing curves per preset
 - Per-cycle variation
 - BPM modulation patterns
+- Preset calibration pass: review each preset together for expected transition character and smoothness
 
 ---
 

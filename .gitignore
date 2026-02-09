@@ -2,3 +2,22 @@ __pycache__/
 *.py[cod]
 .vscode/
 .mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.tox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Coverage and test output
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Build and packaging artifacts
+build/
+dist/
+*.egg-info/
